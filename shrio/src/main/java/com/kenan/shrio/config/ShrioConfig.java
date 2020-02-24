@@ -1,6 +1,7 @@
 package com.kenan.shrio.config;
 
 import com.kenan.shrio.filter.LogoutFilter;
+import com.kenan.shrio.shiro.DefaultHeaderSessionManager;
 import com.kenan.shrio.shiro.RedisSessionDAO;
 import com.kenan.shrio.shiro.UserRealm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -94,8 +95,8 @@ public class ShrioConfig {
         return  securityManager;
     }
     @Bean
-    public DefaultWebSessionManager getSessionManager(){
-        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+    public DefaultHeaderSessionManager getSessionManager(){
+        DefaultHeaderSessionManager sessionManager = new DefaultHeaderSessionManager();
         sessionManager.setSessionDAO(getRedisSessionDAO());
         return sessionManager;
     }
