@@ -18,11 +18,14 @@ public class RedisSessionDAO extends CachingSessionDAO {
     private static final Logger log = LoggerFactory.getLogger(UserRealm.class);
 
     // 会话key
-    private final static String SHIRO_SESSION_ID = "shiro:session:";
+    private final static String SHIRO_SESSION_ID = "kenan:";
     @Override
     protected Serializable doCreate(Session session) {
-        Serializable sessionId = generateSessionId(session);
-        assignSessionId(session, sessionId);
+        Serializable sessionId = session.getId();
+        if(session.getId() == null){
+            sessionId = generateSessionId(session);
+            assignSessionId(session, sessionId);
+        }
         JedisUtils.setObjectValue(SHIRO_SESSION_ID + "_" + sessionId, session, (int) session.getTimeout() / 1000);
         return sessionId;
     }

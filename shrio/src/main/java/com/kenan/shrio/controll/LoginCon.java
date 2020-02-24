@@ -27,6 +27,7 @@ public class LoginCon extends BaseController{
         UsernamePasswordToken token = new UsernamePasswordToken(param.get("name"), param.get("pass"));
         UserData userData = new UserData(param.get("name"),param.get("pass"));
         //Subject subject = SecurityUtils.getSubject();
+        request.setAttribute("userId","180518585838825118_9kenan4261090a434580f9b0820fa40752");
         try {
             ShiroUtils.loginToken(request,response,userData);
             return "成功";

@@ -1,6 +1,6 @@
 package com.kenan.shrio.config;
 
-import com.kenan.shrio.shiro.LogoutFilter;
+import com.kenan.shrio.filter.LogoutFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

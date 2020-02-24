@@ -1,10 +1,7 @@
 package com.kenan.shrio.shiro;
 
 import org.apache.shiro.session.Session;
-import org.apache.shiro.session.mgt.DefaultSessionManager;
-import org.apache.shiro.session.mgt.DelegatingSession;
-import org.apache.shiro.session.mgt.SessionContext;
-import org.apache.shiro.session.mgt.SessionKey;
+import org.apache.shiro.session.mgt.*;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.session.mgt.WebSessionKey;
 import org.apache.shiro.web.session.mgt.WebSessionManager;
@@ -32,8 +29,8 @@ public class DefaultHeaderSessionManager extends DefaultSessionManager implement
             log.trace("Creating session for host {}", s.getHost());
         }
         HttpServletRequest request = WebUtils.getHttpRequest(context);
-        HttpServletResponse response = WebUtils.getHttpResponse(context);
-        s.setAttribute("req",request);
+        String userId = (String)request.getAttribute("userId");
+        ((SimpleSession)s).setId(userId);
         this.create(s);
         return s;
     }

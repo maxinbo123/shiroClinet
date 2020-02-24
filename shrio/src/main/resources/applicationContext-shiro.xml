@@ -21,7 +21,6 @@
                 /style/**=anon
                 /logout=logout
                 /login=anon
-                /**=user
             </value>
         </property>
         <property name="filters">
@@ -31,7 +30,7 @@
         </property>
     </bean>
 
-    <bean id="logoutFilter" class="com.kenan.shrio.shiro.LogoutFilter"></bean>
+    <bean id="logoutFilter" class="com.kenan.shrio.filter.LogoutFilter"></bean>
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="userRealm"/>  <!--这里是自定义的realm(数据源)-->
         <property name="sessionManager" ref="sessionManager"></property>
